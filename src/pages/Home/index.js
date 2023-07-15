@@ -1,51 +1,61 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
-
-const GET_PLAYLISTS = gql`query ExampleQuery($playlistId: Int!, $search: String) {
-    _empty
-    getPlaylists {
-      id
-      title
-    }
-    getSongs(playlistId: $playlistId, search: $search) {
-      _id
-      artist
-      duration
-      photo
-      title
-      url
-    }
-    getCategories
-  }
-  `;
+import React, { useLayoutEffect, useState } from "react";
+import { useQuery } from "@apollo/client";
+import NavBar from "../../components/navBar";
+import { Container, Wrapper } from "./styles";
+import { GET_SONGS } from "../../config/utils";
+import MusicFinder from "../../components/music-finder";
+import { ColorExtractor } from "react-color-extractor";
 
 const Home = () => {
-  const { loading, error, data } = useQuery(GET_PLAYLISTS, {
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
+  const [search, setSearch] = useState(null);
+  const [selectedSong, setSelectedSong] = useState(null);
+  const [startColor, setStartColor] = useState("#201606");
+
+  const { loading, error, data } = useQuery(GET_SONGS, {
     variables: {
-      playlistId: 2,
-      search: null,
+      playlistId: selectedPlaylistId,
+      search: search ? search : null,
     },
   });
 
-  if (loading) {
-    return <p>Loading...</p>;
-  }
+  useLayoutEffect(() => {
+    document.body.style.background = `linear-gradient(135deg, ${startColor} 0%, #000 100%)`;
+  }, [data, selectedPlaylistId, search, startColor]);
 
   if (error) {
     return <p>Error: {error?.message}</p>;
   }
 
-  console.log(data)
-
+  console.log("song data =", data?.getSongs);
   return (
-    <div>
-      <h1>Playlists</h1>
-      <ul>
-        {data?.getPlaylists.map((playlist) => (
-          <li key={playlist?.id}>{playlist?.title}</li>
-        ))}
-      </ul>
-    </div>
+    <Wrapper
+      background={`linear-gradient(135deg, ${startColor} 0%, #000 100%)`}
+      id="wrapper"
+    >
+      {loading && <>Loading</>}
+      <Container id="Container">
+        <NavBar
+          selectedPlaylistId={selectedPlaylistId}
+          setSelectedPlaylistId={setSelectedPlaylistId}
+        />
+        <ColorExtractor
+          src={selectedSong?.photo}
+          getColors={(colors) => {
+            if (colors.length > 0) {
+              setStartColor(colors[3]);
+            }
+          }}
+        />
+        <MusicFinder
+          selectedPlaylistId={selectedPlaylistId}
+          data={data?.getSongs}
+          setSearch={setSearch}
+          selectedSong={selectedSong}
+          setSelectedSong={setSelectedSong}
+        />
+      </Container>
+    </Wrapper>
   );
 };
 
