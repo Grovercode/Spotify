@@ -8,3 +8,16 @@ export const GET_PLAYLISTS = gql`
     }
   }
 `;
+
+export const GET_SONGS = gql`
+  query GetSongs($playlistId: Int!, $search: String) {
+    getSongs(playlistId: $playlistId, search: $search) {
+      _id
+      artist
+      duration
+      photo
+      title
+      url
+    }
+  }
+`;
