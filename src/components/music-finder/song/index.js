@@ -10,7 +10,13 @@ import {
 } from "./styles";
 
 const Song = ({ data, selectedSong, setSelectedSong }) => {
-  console.log("song data = ", data);
+  // Function to convert duration to "mm:ss" format
+  const formatDuration = (duration) => {
+    const minutes = Math.floor(duration / 100);
+    const seconds = duration % 100;
+    return `${minutes}:${seconds}`;
+  };
+
   return (
     <SongContainer
       onClick={() => setSelectedSong(data)}
@@ -23,7 +29,7 @@ const Song = ({ data, selectedSong, setSelectedSong }) => {
           <SubTitle>{data?.artist}</SubTitle>
         </InfoContainer>
       </LeftContainer>
-      <Duration>{data?.duration}</Duration>
+      <Duration>{formatDuration(data?.duration)}</Duration>
     </SongContainer>
   );
 };
