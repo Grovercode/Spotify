@@ -7,7 +7,6 @@ export const MusicListWrapper = styled.div``;
 
 export const Title = styled.div`
   color: #fff;
-  font-family: "Basier Circle";
   font-size: 32px;
   font-style: normal;
   font-weight: 700;

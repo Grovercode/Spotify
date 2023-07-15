@@ -13,7 +13,7 @@ const MusicFinder = ({ setSearch, data, selectedSong, setSelectedSong }) => {
         autoHide
         autoHideTimeout={1000}
         autoHideDuration={200}
-        style={{ maxHeight: "74vh", marginTop: "25px" }}
+        style={{ maxHeight: "80%", marginTop: "25px" }}
       >
         {data &&
           data.map((song, index) => (

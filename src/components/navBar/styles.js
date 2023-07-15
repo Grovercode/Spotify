@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import ProfileImage from "../../assets/profile.png";
 
 export const Wrapper = styled.div`
   display: flex;
@@ -15,7 +14,6 @@ export const PlaylistsContainer = styled.div`
 
 export const Playlists = styled.div`
   color: #fff;
-  font-family: Basier Circle;
   font-size: 20px;
   font-style: normal;
   font-weight: 400;

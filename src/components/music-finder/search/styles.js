@@ -18,7 +18,6 @@ export const InputField = styled.input`
   color: white;
   outline: none;
   margin-right: 8px;
-  font-family: "Basier Circle", sans-serif;
   font-size: 18px;
   font-style: normal;
   font-weight: 400;
@@ -29,7 +28,6 @@ export const InputField = styled.input`
   &::-webkit-input-placeholder {
     color: #fff;
     opacity: 0.6;
-    font-family: "Basier Circle", sans-serif;
     font-size: 18px;
     font-style: normal;
     font-weight: 400;

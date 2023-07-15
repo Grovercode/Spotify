@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import NavBar from "../../components/navBar";
-import { Wrapper } from "./styles";
+import { Container, Wrapper } from "./styles";
 import { GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
@@ -29,27 +29,32 @@ const Home = () => {
 
   console.log("song data =", data?.getSongs);
   return (
-    <Wrapper id="wrapper">
+    <Wrapper
+      background={`linear-gradient(135deg, ${startColor} 0%, #000 100%)`}
+      id="wrapper"
+    >
       {loading && <>Loading</>}
-      <NavBar
-        selectedPlaylistId={selectedPlaylistId}
-        setSelectedPlaylistId={setSelectedPlaylistId}
-      />
-      <ColorExtractor
-        src={selectedSong?.photo}
-        getColors={(colors) => {
-          if (colors.length > 0) {
-            setStartColor(colors[3]);
-          }
-        }}
-      />
-      <MusicFinder
-        selectedPlaylistId={selectedPlaylistId}
-        data={data?.getSongs}
-        setSearch={setSearch}
-        selectedSong={selectedSong}
-        setSelectedSong={setSelectedSong}
-      />
+      <Container id="Container">
+        <NavBar
+          selectedPlaylistId={selectedPlaylistId}
+          setSelectedPlaylistId={setSelectedPlaylistId}
+        />
+        <ColorExtractor
+          src={selectedSong?.photo}
+          getColors={(colors) => {
+            if (colors.length > 0) {
+              setStartColor(colors[3]);
+            }
+          }}
+        />
+        <MusicFinder
+          selectedPlaylistId={selectedPlaylistId}
+          data={data?.getSongs}
+          setSearch={setSearch}
+          selectedSong={selectedSong}
+          setSelectedSong={setSelectedSong}
+        />
+      </Container>
     </Wrapper>
   );
 };
