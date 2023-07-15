@@ -1,7 +1,10 @@
-import React from 'react';
-import { useQuery, gql } from '@apollo/client';
+import React, { useState } from "react";
+import { useQuery, gql } from "@apollo/client";
+import NavBar from "../../components/navBar";
+import { Wrapper } from "./styles";
 
-const GET_PLAYLISTS = gql`query ExampleQuery($playlistId: Int!, $search: String) {
+const GET_PLAYLISTS = gql`
+  query ExampleQuery($playlistId: Int!, $search: String) {
     _empty
     getPlaylists {
       id
@@ -17,9 +20,10 @@ const GET_PLAYLISTS = gql`query ExampleQuery($playlistId: Int!, $search: String)
     }
     getCategories
   }
-  `;
+`;
 
 const Home = () => {
+  const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
   const { loading, error, data } = useQuery(GET_PLAYLISTS, {
     variables: {
       playlistId: 2,
@@ -35,17 +39,16 @@ const Home = () => {
     return <p>Error: {error?.message}</p>;
   }
 
-  console.log(data)
-
   return (
-    <div>
-      <h1>Playlists</h1>
-      <ul>
-        {data?.getPlaylists.map((playlist) => (
-          <li key={playlist?.id}>{playlist?.title}</li>
-        ))}
-      </ul>
-    </div>
+    <Wrapper>
+      <NavBar
+        selectedPlaylistId={selectedPlaylistId}
+        setSelectedPlaylistId={setSelectedPlaylistId}
+      />
+      <div>
+        <h1>Music player</h1>
+      </div>
+    </Wrapper>
   );
 };
 
