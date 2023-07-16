@@ -5,6 +5,7 @@ import { Container, Wrapper } from "./styles";
 import { GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
+import MusicPlayer from "../../components/music-player";
 
 const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
@@ -54,6 +55,8 @@ const Home = () => {
           selectedSong={selectedSong}
           setSelectedSong={setSelectedSong}
         />
+
+        {selectedSong && <MusicPlayer selectedSong={selectedSong} />}
       </Container>
     </Wrapper>
   );

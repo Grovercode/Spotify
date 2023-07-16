@@ -3,12 +3,7 @@ import { GET_PLAYLISTS } from "../../config/utils";
 import { useQuery } from "@apollo/client";
 import spotifyLogo from "../../assets/spotify-logo.svg";
 import ProfileImage from "../../assets/profile.png";
-import {
-  Playlists,
-  PlaylistsContainer,
-  ProfilePicture,
-  Wrapper,
-} from "./styles";
+import { Playlists, PlaylistsContainer, Wrapper } from "./styles";
 
 const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
@@ -29,7 +24,12 @@ const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
   return (
     <Wrapper>
       <div>
-        <img src={spotifyLogo} alt="logo" />
+        <img
+          onClick={() => setSelectedPlaylistId(1)}
+          src={spotifyLogo}
+          alt="logo"
+          style={{ cursor: "pointer" }}
+        />
         <PlaylistsContainer>
           {data?.getPlaylists.map((playlist) => (
             <Playlists

@@ -22,5 +22,3 @@ export const Playlists = styled.div`
   padding-top: 16px;
   cursor: pointer;
 `;
-
-export const ProfilePicture = styled.div``;
