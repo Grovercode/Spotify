@@ -2,10 +2,10 @@ import styled from "styled-components";
 
 export const Wrapper = styled.div`
   color: white;
-  height: 100%;
-  width: 100%;
-  position: fixed;
+  height: 100vh;
+  position: relative;
   background: ${(props) => props?.background || "black"};
+  overflow: auto;
 `;
 
 export const Container = styled.div`

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { forwardRef } from "react";
 import {
   Duration,
   Icon,
@@ -8,17 +8,12 @@ import {
   SubTitle,
   Title,
 } from "./styles";
+import { formatDuration } from "../../../config/utils";
 
-const Song = ({ data, selectedSong, setSelectedSong }) => {
-  // Function to convert duration to "mm:ss" format
-  const formatDuration = (duration) => {
-    const minutes = Math.floor(duration / 100);
-    const seconds = duration % 100;
-    return `${minutes}:${seconds}`;
-  };
-
+const Song = forwardRef(({ data, selectedSong, setSelectedSong }, ref) => {
   return (
     <SongContainer
+      ref={ref}
       onClick={() => setSelectedSong(data)}
       selected={selectedSong?._id === data?._id}
     >
@@ -32,6 +27,6 @@ const Song = ({ data, selectedSong, setSelectedSong }) => {
       <Duration>{formatDuration(data?.duration)}</Duration>
     </SongContainer>
   );
-};
+});
 
 export default Song;

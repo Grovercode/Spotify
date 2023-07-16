@@ -22,7 +22,7 @@ import PauseIcon from "../../assets/pause.png";
 import NextIcon from "../../assets/next.svg";
 import SoundIcon from "../../assets/sound.png";
 
-const MusicPlayer = ({ selectedSong }) => {
+const MusicPlayer = ({ selectedSong, handleNext, handlePrevious }) => {
   const [isPlaying, setIsPlaying] = useState(true);
   const [play, { pause, stop, sound, duration }] = useSound(selectedSong?.url);
 
@@ -113,13 +113,17 @@ const MusicPlayer = ({ selectedSong }) => {
       <PlayerContainer>
         <SideIcons src={OptionsIcon} alt="options" />
         <MusicController>
-          <ControllerIcons src={BackIcon} alt="previous" />
+          <ControllerIcons
+            onClick={handlePrevious}
+            src={BackIcon}
+            alt="previous"
+          />
           <PlayPauseIcon
             onClick={handlePlayPause}
             src={isPlaying ? PauseIcon : PlayIcon}
             alt="play-pause"
           />
-          <ControllerIcons src={NextIcon} alt="next" />
+          <ControllerIcons onClick={handleNext} src={NextIcon} alt="next" />
         </MusicController>
         <SideIcons src={SoundIcon} alt="sound" />
       </PlayerContainer>
