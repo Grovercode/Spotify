@@ -6,6 +6,7 @@ export const Wrapper = styled.div`
   flex-direction: column;
   justify-content: space-between;
   color: white;
+  box-shadow: 2px 1px 20px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const PlaylistsContainer = styled.div`

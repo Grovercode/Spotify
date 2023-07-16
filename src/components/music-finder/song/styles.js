@@ -36,6 +36,7 @@ export const Title = styled.div`
   font-style: normal;
   font-weight: 400;
   line-height: 24px; /* 133.333% */
+  margin-right: 16px;
 `;
 
 export const SubTitle = styled.div`

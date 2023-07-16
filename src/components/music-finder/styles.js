@@ -1,6 +1,9 @@
 import styled from "styled-components";
 
-export const Wrapper = styled.div``;
+export const Wrapper = styled.div`
+  width: 50%;
+  min-width: min-content;
+`;
 export const Title = styled.div`
   color: #fff;
   font-size: 32px;

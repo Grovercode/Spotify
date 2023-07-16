@@ -1,7 +1,7 @@
 import React, { useLayoutEffect, useState } from "react";
 import { useQuery } from "@apollo/client";
 import NavBar from "../../components/navBar";
-import { Container, Wrapper } from "./styles";
+import { Container, MusicPlayerContainer, Wrapper } from "./styles";
 import { GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
@@ -93,13 +93,15 @@ const Home = () => {
           setSelectedSong={setSelectedSong}
         />
 
-        {selectedSong && (
-          <MusicPlayer
-            selectedSong={selectedSong}
-            handleNext={handleNext}
-            handlePrevious={handlePrevious}
-          />
-        )}
+        <MusicPlayerContainer id="music-player">
+          {selectedSong && (
+            <MusicPlayer
+              selectedSong={selectedSong}
+              handleNext={handleNext}
+              handlePrevious={handlePrevious}
+            />
+          )}
+        </MusicPlayerContainer>
       </Container>
     </Wrapper>
   );

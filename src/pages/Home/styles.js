@@ -19,3 +19,12 @@ export const Container = styled.div`
   width: 94%; */
   overflow: auto;
 `;
+
+export const MusicPlayerContainer = styled.div`
+  display: flex;
+  height: max-content;
+  width: 50%;
+  min-width: fit-content;
+  justify-content: center;
+  margin: 66px 0 0 0;
+`;
