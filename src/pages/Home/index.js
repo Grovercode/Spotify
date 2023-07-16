@@ -11,7 +11,7 @@ const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
   const [search, setSearch] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
-  const [startColor, setStartColor] = useState("#201606");
+  const [color, setColor] = useState("#201606");
 
   const { loading, error, data } = useQuery(GET_SONGS, {
     variables: {
@@ -20,18 +20,18 @@ const Home = () => {
     },
   });
 
-  useLayoutEffect(() => {
-    document.body.style.background = `linear-gradient(135deg, ${startColor} 0%, #000 100%)`;
-  }, [data, selectedPlaylistId, search, startColor]);
-
   if (error) {
     return <p>Error: {error?.message}</p>;
   }
 
+  const handleNext = () => {};
+
+  const handlePrevious = () => {};
+
   console.log("song data =", data?.getSongs);
   return (
     <Wrapper
-      background={`linear-gradient(135deg, ${startColor} 0%, #000 100%)`}
+      background={`linear-gradient(135deg, ${color} 0%, #000 100%)`}
       id="wrapper"
     >
       {loading && <>Loading</>}
@@ -44,7 +44,7 @@ const Home = () => {
           src={selectedSong?.photo}
           getColors={(colors) => {
             if (colors.length > 0) {
-              setStartColor(colors[3]);
+              setColor(colors[3]);
             }
           }}
         />
@@ -56,7 +56,12 @@ const Home = () => {
           setSelectedSong={setSelectedSong}
         />
 
-        {selectedSong && <MusicPlayer selectedSong={selectedSong} />}
+        {selectedSong && (
+          <MusicPlayer
+            setSelectedSong={setSelectedSong}
+            selectedSong={selectedSong}
+          />
+        )}
       </Container>
     </Wrapper>
   );

@@ -24,20 +24,19 @@ import SoundIcon from "../../assets/sound.png";
 
 const MusicPlayer = ({ selectedSong }) => {
   const [isPlaying, setIsPlaying] = useState(true);
-  const [play, { pause, sound, duration }] = useSound(selectedSong?.url);
+  const [play, { pause, stop, sound, duration }] = useSound(selectedSong?.url);
 
   const [progress, setProgress] = useState(0);
   const [prevProgress, setPrevProgress] = useState(0);
 
   useEffect(() => {
-    pauseMusic();
-    const newAudio = new Audio(selectedSong?.url);
-    if (newAudio) {
-      sound?.seek(0);
-      setProgress(0);
-      setPrevProgress(0);
-      playMusic();
+    if (sound) {
+      pauseMusic();
+      stopMusic();
     }
+    playMusic();
+    setProgress(0);
+    setPrevProgress(0);
   }, [selectedSong]);
 
   useEffect(() => {
@@ -85,6 +84,11 @@ const MusicPlayer = ({ selectedSong }) => {
   const playMusic = () => {
     play();
     setIsPlaying(true);
+  };
+
+  const stopMusic = () => {
+    stop();
+    setIsPlaying(false);
   };
 
   return (

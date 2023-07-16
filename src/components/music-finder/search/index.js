@@ -9,10 +9,8 @@ const Search = ({ setSearch }) => {
   };
 
   const handleInputChange = (e) => {
+    setSearch(e.target.value);
     setSearchText(e.target.value);
-    if (e.target.value === "") {
-      setSearch("");
-    }
   };
 
   const handleKeyDown = (event) => {

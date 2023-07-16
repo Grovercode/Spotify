@@ -32,22 +32,6 @@ export const Cover = styled.img`
   margin: 32px 0px 24px 0px;
 `;
 
-// export const Seekbar = styled.div`
-//   width: 480px;
-//   height: 6px;
-//   flex-shrink: 0;
-//   overflow: hidden;
-//   border-radius: 16px;
-//   background: rgba(255, 255, 255, 0.2);
-//   cursor: pointer;
-// `;
-
-// export const Progress = styled.div`
-//   height: 100%;
-//   background: #fff;
-//   opacity: 1; /* Replace with your desired color */
-// `;
-
 export const Seekbar = styled.div`
   width: 480px;
   height: 6px;
@@ -72,7 +56,7 @@ export const Seekbar = styled.div`
 export const Progress = styled.div`
   height: 100%;
   background: #fff;
-  opacity: 1; /* Replace with your desired color */
+  opacity: 1;
 `;
 
 export const PlayerContainer = styled.div`
@@ -100,7 +84,6 @@ export const MusicController = styled.div`
 export const ControllerIcons = styled.img`
   width: 32px;
   height: 32px;
-  opacity: 0.6;
   cursor: pointer;
 `;
 

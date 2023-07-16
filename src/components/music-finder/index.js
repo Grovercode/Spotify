@@ -1,5 +1,5 @@
-import React, { useState } from "react";
-import { MusicListWrapper, Title, Wrapper } from "./styles";
+import React from "react";
+import { Title, Wrapper } from "./styles";
 import Search from "./search";
 import Song from "./song";
 import { Scrollbars } from "react-custom-scrollbars";
