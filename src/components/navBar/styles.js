@@ -1,6 +1,7 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;

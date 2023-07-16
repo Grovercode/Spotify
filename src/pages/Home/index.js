@@ -6,7 +6,6 @@ import { GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
-import { useEffect } from "react";
 
 const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
@@ -25,10 +24,6 @@ const Home = () => {
       setSearch("");
     }, 100);
   }, [selectedPlaylistId]);
-
-  if (error) {
-    return <p>Error: {error?.message}</p>;
-  }
 
   const handleNext = () => {
     if (data?.getSongs?.length === 0) return;
@@ -66,17 +61,21 @@ const Home = () => {
     }
   };
 
+  if (error) {
+    return <p>Error: {error?.message}</p>;
+  }
+
   return (
     <Wrapper
       background={`linear-gradient(135deg, ${color} 0%, #000 100%)`}
       id="Wrapper"
     >
+      <NavBar
+        selectedPlaylistId={selectedPlaylistId}
+        setSelectedPlaylistId={setSelectedPlaylistId}
+      />
       {loading && <>Loading</>}
       <Container id="Container">
-        <NavBar
-          selectedPlaylistId={selectedPlaylistId}
-          setSelectedPlaylistId={setSelectedPlaylistId}
-        />
         <ColorExtractor
           src={selectedSong?.photo}
           getColors={(colors) => {

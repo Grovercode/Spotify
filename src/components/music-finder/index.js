@@ -1,8 +1,7 @@
 import React, { useRef, useEffect } from "react";
-import { Title, Wrapper } from "./styles";
+import { ScrollableContainer, Title, Wrapper } from "./styles";
 import Search from "./search";
 import Song from "./song";
-import { Scrollbars } from "react-custom-scrollbars";
 
 const MusicFinder = ({
   setSearch,
@@ -26,23 +25,19 @@ const MusicFinder = ({
     <Wrapper>
       <Title>For You</Title>
       <Search setSearch={setSearch} search={search} />
-      <Scrollbars
-        autoHide
-        autoHideTimeout={1000}
-        autoHideDuration={200}
-        style={{ maxHeight: "80%", marginTop: "25px" }}
-      >
+
+      <ScrollableContainer>
         {data &&
           data.map((song, index) => (
             <Song
-              ref={selectedSong?._id === song._id ? selectedSongRef : null}
+              // ref={selectedSong?._id === song._id ? selectedSongRef : null}
               selectedSong={selectedSong}
               setSelectedSong={setSelectedSong}
               key={index}
               data={song}
             />
           ))}
-      </Scrollbars>
+      </ScrollableContainer>
     </Wrapper>
   );
 };
