@@ -23,9 +23,8 @@ import NextIcon from "../../assets/next.svg";
 import SoundIcon from "../../assets/sound.png";
 
 const MusicPlayer = ({ selectedSong, handleNext, handlePrevious }) => {
-  const [isPlaying, setIsPlaying] = useState(true);
   const [play, { pause, stop, sound, duration }] = useSound(selectedSong?.url);
-
+  const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
   const [prevProgress, setPrevProgress] = useState(0);
 

@@ -6,12 +6,13 @@ import { GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
+import { useEffect } from "react";
 
 const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
   const [search, setSearch] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
-  const [color, setColor] = useState("#201606");
+  const [color, setColor] = useState("#445c84");
 
   const { loading, error, data } = useQuery(GET_SONGS, {
     variables: {
@@ -19,7 +20,8 @@ const Home = () => {
       search: search ? search : null,
     },
   });
-  useLayoutEffect(() => {
+
+  useEffect(() => {
     setTimeout(() => {
       setSearch("");
     }, 100);
@@ -74,7 +76,6 @@ const Home = () => {
         selectedPlaylistId={selectedPlaylistId}
         setSelectedPlaylistId={setSelectedPlaylistId}
       />
-      {loading && <>Loading</>}
       <Container id="Container">
         <ColorExtractor
           src={selectedSong?.photo}
@@ -91,6 +92,7 @@ const Home = () => {
           setSearch={setSearch}
           selectedSong={selectedSong}
           setSelectedSong={setSelectedSong}
+          isLoading={loading}
         />
 
         <MusicPlayerContainer id="music-player">

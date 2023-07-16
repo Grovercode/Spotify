@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
   padding: 32px;
@@ -23,4 +23,33 @@ export const Playlists = styled.div`
   opacity: ${(props) => (props.selected ? 1 : 0.4)};
   padding-top: 16px;
   cursor: pointer;
+`;
+
+const skeletonAnimation = keyframes`
+  0% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: -200%;
+  }
+`;
+
+export const SkeletonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  gap: 18px;
+`;
+
+export const SkeletonPlaylists = styled(Playlists)`
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  background-size: 200% auto;
+  height: 24px;
+  animation: ${skeletonAnimation} 3s linear infinite;
+  border-radius: 8px;
 `;

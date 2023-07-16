@@ -3,14 +3,24 @@ import { GET_PLAYLISTS } from "../../config/utils";
 import { useQuery } from "@apollo/client";
 import spotifyLogo from "../../assets/spotify-logo.svg";
 import ProfileImage from "../../assets/profile.png";
-import { Playlists, PlaylistsContainer, Wrapper } from "./styles";
+import {
+  Playlists,
+  PlaylistsContainer,
+  SkeletonContainer,
+  SkeletonPlaylists,
+  Wrapper,
+} from "./styles";
+
+const SkeletonPlaylistItem = () => (
+  <SkeletonContainer>
+    {[...Array(4)].map((_, index) => (
+      <SkeletonPlaylists />
+    ))}
+  </SkeletonContainer>
+);
 
 const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
-
-  if (loading) {
-    return <p>Loading...</p>;
-  }
 
   if (error) {
     return <p>Error: {error?.message}</p>;
@@ -20,7 +30,6 @@ const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
     setSelectedPlaylistId(playlistId);
   };
 
-  console.log("Navbar data = ", data?.getPlaylists);
   return (
     <Wrapper>
       <div>
@@ -30,17 +39,21 @@ const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
           alt="logo"
           style={{ cursor: "pointer" }}
         />
-        <PlaylistsContainer>
-          {data?.getPlaylists.map((playlist) => (
-            <Playlists
-              selected={playlist.id === selectedPlaylistId}
-              key={playlist.id}
-              onClick={() => handlePlaylistClick(playlist.id)}
-            >
-              {playlist.title}
-            </Playlists>
-          ))}
-        </PlaylistsContainer>
+        {loading ? (
+          <SkeletonPlaylistItem />
+        ) : (
+          <PlaylistsContainer>
+            {data?.getPlaylists.map((playlist) => (
+              <Playlists
+                selected={playlist.id === selectedPlaylistId}
+                key={playlist.id}
+                onClick={() => handlePlaylistClick(playlist.id)}
+              >
+                {playlist.title}
+              </Playlists>
+            ))}
+          </PlaylistsContainer>
+        )}
       </div>
 
       <img
