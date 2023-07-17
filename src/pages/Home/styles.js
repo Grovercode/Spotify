@@ -15,16 +15,12 @@ export const Container = styled.div`
   gap: 100px;
   padding: 32px;
   width: 100%;
-  /* height: 94%;
-  width: 94%; */
   overflow: auto;
 `;
 
 export const MusicPlayerContainer = styled.div`
   display: flex;
-  height: max-content;
   width: 50%;
-  min-width: fit-content;
   justify-content: center;
   margin: 66px 0 0 0;
 `;

@@ -7,12 +7,14 @@ import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
 import { useEffect } from "react";
+import { useDevice } from "../../config/custom-hooks";
 
 const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
   const [search, setSearch] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
   const [color, setColor] = useState("#445c84");
+  const deviceType = useDevice();
 
   const { loading, error, data } = useQuery(GET_SONGS, {
     variables: {

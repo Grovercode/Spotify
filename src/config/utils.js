@@ -28,3 +28,9 @@ export const formatDuration = (duration) => {
   const seconds = duration % 100;
   return `${minutes}:${seconds}`;
 };
+
+export const DEVICE_TYPES = {
+  MOBILE: "mobile",
+  TABLET: "tablet",
+  DESKTOP: "desktop",
+};

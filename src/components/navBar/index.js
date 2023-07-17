@@ -19,6 +19,21 @@ const SkeletonPlaylistItem = () => (
   </SkeletonContainer>
 );
 
+// const ThreeLineButtonComponent = () => {
+//   const [isOpen, setIsOpen] = useState(false);
+//   const handleClick = () => {
+//     setIsOpen(!isOpen);
+//     onClick();
+//   };
+//   return (
+//     <ThreeLineButton isOpen={isOpen} onClick={handleClick}>
+//       <Line isOpen={isOpen} />
+//       <Line isOpen={isOpen} />
+//       <Line isOpen={isOpen} />
+//     </ThreeLineButton>
+//   );
+// };
+
 const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
 
