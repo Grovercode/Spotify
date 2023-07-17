@@ -1,11 +1,12 @@
 import styled from "styled-components";
 
 export const Wrapper = styled.div`
+  display: flex;
   color: white;
-  height: 100%;
-  width: 100%;
-  position: fixed;
+  height: 100vh;
+  position: relative;
   background: ${(props) => props?.background || "black"};
+  overflow: auto;
 `;
 
 export const Container = styled.div`
@@ -13,7 +14,17 @@ export const Container = styled.div`
   flex-direction: row;
   gap: 100px;
   padding: 32px;
-  height: 94%;
-  width: 94%;
+  width: 100%;
+  /* height: 94%;
+  width: 94%; */
   overflow: auto;
+`;
+
+export const MusicPlayerContainer = styled.div`
+  display: flex;
+  height: max-content;
+  width: 50%;
+  min-width: fit-content;
+  justify-content: center;
+  margin: 66px 0 0 0;
 `;

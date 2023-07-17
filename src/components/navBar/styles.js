@@ -1,10 +1,12 @@
-import styled from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
+  padding: 32px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   color: white;
+  box-shadow: 2px 1px 20px 1px rgba(0, 0, 0, 0.2);
 `;
 
 export const PlaylistsContainer = styled.div`
@@ -23,4 +25,31 @@ export const Playlists = styled.div`
   cursor: pointer;
 `;
 
-export const ProfilePicture = styled.div``;
+const skeletonAnimation = keyframes`
+  0% {
+    background-position: 200%;
+  }
+  100% {
+    background-position: -200%;
+  }
+`;
+
+export const SkeletonContainer = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin-top: 35px;
+  gap: 18px;
+`;
+
+export const SkeletonPlaylists = styled(Playlists)`
+  background: linear-gradient(
+    90deg,
+    rgba(255, 255, 255, 0.08) 0%,
+    rgba(255, 255, 255, 0.2) 50%,
+    rgba(255, 255, 255, 0.08) 100%
+  );
+  background-size: 200% auto;
+  height: 24px;
+  animation: ${skeletonAnimation} 3s linear infinite;
+  border-radius: 8px;
+`;
