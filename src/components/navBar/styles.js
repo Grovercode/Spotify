@@ -1,4 +1,4 @@
-import styled, { keyframes } from "styled-components";
+import styled, { css, keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
   padding: 32px;
@@ -7,6 +7,19 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   color: white;
   box-shadow: 2px 1px 20px 1px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: ${(props) => (props?.isOpen ? "0" : "-365px")};
+    height: -webkit-fill-available;
+    width: 100%;
+    max-width: 140px;
+    transition: 0.2s linear;
+    opacity: 1;
+    z-index: 3;
+    background: inherit;
+  }
 `;
 
 export const PlaylistsContainer = styled.div`
@@ -23,6 +36,11 @@ export const Playlists = styled.div`
   opacity: ${(props) => (props.selected ? 1 : 0.4)};
   padding-top: 16px;
   cursor: pointer;
+  @media (max-width: 768px) {
+    &:first-child {
+      padding-top: 45px;
+    }
+  }
 `;
 
 const skeletonAnimation = keyframes`

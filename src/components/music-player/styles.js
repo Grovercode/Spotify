@@ -1,7 +1,11 @@
 import styled from "styled-components";
+import { DEVICE_TYPES } from "../../config/utils";
 
 export const Container = styled.div`
-  max-width: 480px;
+  width: 100%;
+  min-width: 280px;
+  max-width: ${(props) =>
+    props?.deviceType !== DEVICE_TYPES.DESKTOP ? "100%" : "480px"};
   height: max-content;
 `;
 
@@ -29,16 +33,18 @@ export const SubTitle = styled.div`
 `;
 
 export const Cover = styled.img`
-  width: 480px;
-  height: 480px;
+  height: auto;
+  width: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  object-fit: contain;
   border-radius: 8px;
   margin: 32px 0px 24px 0px;
 `;
 
 export const Seekbar = styled.div`
-  width: 480px;
+  width: 100%;
   height: 6px;
-  flex-shrink: 0;
   position: relative;
   overflow: hidden;
   border-radius: 16px;
@@ -65,34 +71,38 @@ export const Progress = styled.div`
 export const PlayerContainer = styled.div`
   display: flex;
   flex-direction: row;
-  gap: 104px;
-  justify-content: space-between;
+  justify-content: space-around;
   margin-top: 32px;
   user-select: none;
 `;
 
 export const SideIcons = styled.img`
-  border-radius: 72px;
   width: 48px;
-  height: 48px;
+  height: auto;
   cursor: pointer;
 `;
 
 export const MusicController = styled.div`
   display: flex;
   align-items: center;
-  gap: 30px;
+  flex: 1;
+  width: 100%;
+  max-width: 100%;
+  gap: max(30px, 1%);
+  justify-content: center;
 `;
 
 export const ControllerIcons = styled.img`
   width: 32px;
-  height: 32px;
+  height: auto;
+  aspect-ratio: 1/1;
   cursor: pointer;
 `;
 
 export const PlayPauseIcon = styled.img`
-  width: 48px;
+  width: auto;
   height: 48px;
+  aspect-ratio: 1/1;
   flex-shrink: 0;
   cursor: pointer;
 `;

@@ -1,5 +1,11 @@
 import React, { useRef, useEffect } from "react";
-import { ScrollableContainer, Title, Wrapper } from "./styles";
+import {
+  ScrollableContainer,
+  Title,
+  TitleContainer,
+  Wrapper,
+  CloseButton,
+} from "./styles";
 import Search from "./search";
 import Song from "./song";
 import {
@@ -11,6 +17,9 @@ import {
   SkeletonSubTitle,
   SkeletonTitle,
 } from "./song/styles";
+import { DEVICE_TYPES, PLAYLIST_MAPPER } from "../../config/utils";
+import CloseButtonIcon from "../../assets/cross.png";
+import ThreeLineButtonComponent from "../options-button";
 
 const SkeletonSong = () => (
   <>
@@ -34,7 +43,13 @@ const MusicFinder = ({
   data,
   selectedSong,
   setSelectedSong,
+  selectedPlaylistId,
   isLoading = false,
+  deviceType,
+  setShowSongs,
+  color = null,
+  showNavBar,
+  setShowNavBar,
 }) => {
   const selectedSongRef = useRef(null);
 
@@ -48,8 +63,42 @@ const MusicFinder = ({
   }, [selectedSong]);
 
   return (
-    <Wrapper>
-      <Title>For You</Title>
+    <Wrapper color={color} deviceType={deviceType}>
+      <TitleContainer deviceType={deviceType}>
+        {deviceType === DEVICE_TYPES.MOBILE ? (
+          setShowNavBar ? (
+            <ThreeLineButtonComponent
+              onClick={() => {
+                setShowNavBar((prevState) => !prevState);
+              }}
+            />
+          ) : (
+            <div style={{ width: "40px" }} />
+          )
+        ) : (
+          <></>
+        )}
+
+        <Title>{PLAYLIST_MAPPER[selectedPlaylistId]}</Title>
+
+        <div>
+          {deviceType === DEVICE_TYPES?.MOBILE ? (
+            selectedSong ? (
+              <CloseButton
+                src={CloseButtonIcon}
+                onClick={() => {
+                  setShowSongs(false);
+                }}
+              />
+            ) : (
+              <div style={{ width: "28px" }} />
+            )
+          ) : (
+            <div style={{ width: "28px" }} />
+          )}
+        </div>
+      </TitleContainer>
+
       <Search setSearch={setSearch} search={search} />
 
       <ScrollableContainer>

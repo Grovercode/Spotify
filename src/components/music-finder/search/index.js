@@ -14,6 +14,7 @@ const Search = ({ setSearch, search }) => {
         placeholder="Search Song, Artist"
         value={search}
         onChange={handleInputChange}
+        autoFocus={search ? true : false}
       />
       <SearchIcon src={searchIcon} alt="Search" />
     </InputContainer>

@@ -1,5 +1,5 @@
 import React from "react";
-import { GET_PLAYLISTS } from "../../config/utils";
+import { DEVICE_TYPES, GET_PLAYLISTS } from "../../config/utils";
 import { useQuery } from "@apollo/client";
 import spotifyLogo from "../../assets/spotify-logo.svg";
 import ProfileImage from "../../assets/profile.png";
@@ -10,6 +10,7 @@ import {
   SkeletonPlaylists,
   Wrapper,
 } from "./styles";
+import { useDevice } from "../../config/custom-hooks/useDevice";
 
 const SkeletonPlaylistItem = () => (
   <SkeletonContainer>
@@ -19,8 +20,9 @@ const SkeletonPlaylistItem = () => (
   </SkeletonContainer>
 );
 
-const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
+const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId, showNavBar }) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
+  const deviceType = useDevice();
 
   if (error) {
     return <p>Error: {error?.message}</p>;
@@ -31,14 +33,18 @@ const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
   };
 
   return (
-    <Wrapper>
+    <Wrapper isOpen={showNavBar}>
       <div>
-        <img
-          onClick={() => setSelectedPlaylistId(1)}
-          src={spotifyLogo}
-          alt="logo"
-          style={{ cursor: "pointer" }}
-        />
+        {deviceType === DEVICE_TYPES.MOBILE ? (
+          <></>
+        ) : (
+          <img
+            onClick={() => setSelectedPlaylistId(1)}
+            src={spotifyLogo}
+            alt="logo"
+            style={{ cursor: "pointer" }}
+          />
+        )}
         {loading ? (
           <SkeletonPlaylistItem />
         ) : (

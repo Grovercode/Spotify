@@ -21,12 +21,25 @@ import PlayIcon from "../../assets/play.png";
 import PauseIcon from "../../assets/pause.png";
 import NextIcon from "../../assets/next.svg";
 import SoundIcon from "../../assets/sound.png";
+import { useDevice } from "../../config/custom-hooks/useDevice";
+import FullScreenDialog from "../fullscreen-dialog";
+import ThreeLineButtonComponent from "../options-button";
 
-const MusicPlayer = ({ selectedSong, handleNext, handlePrevious }) => {
+const MusicPlayer = ({
+  selectedSong,
+  handleNext,
+  handlePrevious,
+  MusicFinderDialog,
+  color,
+  showSongs,
+  setShowSongs,
+  selectedPlaylistId,
+}) => {
   const [play, { pause, stop, sound, duration }] = useSound(selectedSong?.url);
   const [isPlaying, setIsPlaying] = useState(true);
   const [progress, setProgress] = useState(0);
   const [prevProgress, setPrevProgress] = useState(0);
+  const deviceType = useDevice();
 
   useEffect(() => {
     if (sound) {
@@ -91,7 +104,7 @@ const MusicPlayer = ({ selectedSong, handleNext, handlePrevious }) => {
   };
 
   return (
-    <Container>
+    <Container deviceType={deviceType}>
       <Header>
         <Title>{selectedSong?.title}</Title>
         <SubTitle>{selectedSong?.artist}</SubTitle>
@@ -110,7 +123,7 @@ const MusicPlayer = ({ selectedSong, handleNext, handlePrevious }) => {
       </Seekbar>
 
       <PlayerContainer>
-        <SideIcons src={OptionsIcon} alt="options" />
+        <SideIcons onClick={() => {}} src={OptionsIcon} alt="options" />
         <MusicController>
           <ControllerIcons
             onClick={handlePrevious}
@@ -126,6 +139,13 @@ const MusicPlayer = ({ selectedSong, handleNext, handlePrevious }) => {
         </MusicController>
         <SideIcons src={SoundIcon} alt="sound" />
       </PlayerContainer>
+      <FullScreenDialog
+        open={showSongs}
+        setOpen={setShowSongs}
+        color={color}
+        MusicFinderDialog={MusicFinderDialog}
+        selectedPlaylistId={selectedPlaylistId}
+      />
     </Container>
   );
 };

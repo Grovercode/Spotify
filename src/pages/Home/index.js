@@ -1,18 +1,25 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import NavBar from "../../components/navBar";
 import { Container, MusicPlayerContainer, Wrapper } from "./styles";
-import { GET_SONGS } from "../../config/utils";
+import { DEVICE_TYPES, GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
 import { useEffect } from "react";
+import { useDevice } from "../../config/custom-hooks/useDevice";
+import ThreeLineButtonComponent from "../../components/options-button";
+import MusicListIcon from "../../assets/music-list.png";
 
 const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
   const [search, setSearch] = useState(null);
   const [selectedSong, setSelectedSong] = useState(null);
   const [color, setColor] = useState("#445c84");
+  const [previousColor, setPrevousColor] = useState("FFF");
+  const [showNavBar, setShowNavBar] = useState(false);
+  const [showSongs, setShowSongs] = useState(false);
+  const deviceType = useDevice();
 
   const { loading, error, data } = useQuery(GET_SONGS, {
     variables: {
@@ -26,6 +33,23 @@ const Home = () => {
       setSearch("");
     }, 100);
   }, [selectedPlaylistId]);
+
+  const MusicFinderDialog = () => (
+    <MusicFinder
+      deviceType={DEVICE_TYPES.MOBILE}
+      selectedPlaylistId={selectedPlaylistId}
+      data={data?.getSongs}
+      search={search}
+      setSearch={setSearch}
+      selectedSong={selectedSong}
+      setSelectedSong={setSelectedSong}
+      isLoading={loading}
+      setShowSongs={setShowSongs}
+      color={color}
+      showNavBar={showNavBar}
+      setShowNavBar={setShowNavBar}
+    />
+  );
 
   const handleNext = () => {
     if (data?.getSongs?.length === 0) return;
@@ -63,47 +87,106 @@ const Home = () => {
     }
   };
 
+  const checkMusicFinder = () => {
+    if (deviceType === DEVICE_TYPES.MOBILE) {
+      if (!selectedSong) return true;
+
+      return false;
+    }
+    return true;
+  };
+
   if (error) {
     return <p>Error: {error?.message}</p>;
   }
 
   return (
     <Wrapper
+      animate={true}
+      previousBackground={`linear-gradient(135deg, ${previousColor} 0%, #000 100%)`}
       background={`linear-gradient(135deg, ${color} 0%, #000 100%)`}
       id="Wrapper"
     >
       <NavBar
         selectedPlaylistId={selectedPlaylistId}
         setSelectedPlaylistId={setSelectedPlaylistId}
+        showNavBar={showNavBar}
+        setShowNavBar={setShowNavBar}
       />
-      <Container id="Container">
+
+      <Container deviceType={deviceType} id="Container">
         <ColorExtractor
           src={selectedSong?.photo}
           getColors={(colors) => {
             if (colors.length > 0) {
+              setPrevousColor(color);
               setColor(colors[3]);
             }
           }}
         />
-        <MusicFinder
-          selectedPlaylistId={selectedPlaylistId}
-          data={data?.getSongs}
-          search={search}
-          setSearch={setSearch}
-          selectedSong={selectedSong}
-          setSelectedSong={setSelectedSong}
-          isLoading={loading}
-        />
+        {checkMusicFinder() && (
+          <MusicFinder
+            deviceType={deviceType}
+            selectedPlaylistId={selectedPlaylistId}
+            data={data?.getSongs}
+            search={search}
+            setSearch={setSearch}
+            selectedSong={selectedSong}
+            setSelectedSong={setSelectedSong}
+            isLoading={loading}
+            setShowSongs={setShowSongs}
+            showNavBar={showNavBar}
+            setShowNavBar={setShowNavBar}
+          />
+        )}
+        <>
+          <MusicPlayerContainer
+            selectedSong={!!selectedSong}
+            deviceType={deviceType}
+            id="music-player"
+          >
+            {deviceType === DEVICE_TYPES.MOBILE && (
+              <div
+                style={{
+                  display: "flex",
+                  marginBottom: "40px",
+                  flexDirection: "colmn",
+                  justifyContent: "space-between",
+                }}
+              >
+                <ThreeLineButtonComponent
+                  showNavBar={showNavBar}
+                  onClick={() => {
+                    setShowNavBar((prevState) => !prevState);
+                  }}
+                />
 
-        <MusicPlayerContainer id="music-player">
-          {selectedSong && (
-            <MusicPlayer
-              selectedSong={selectedSong}
-              handleNext={handleNext}
-              handlePrevious={handlePrevious}
-            />
-          )}
-        </MusicPlayerContainer>
+                <img
+                  onClick={() => {
+                    setShowSongs(true);
+                  }}
+                  src={MusicListIcon}
+                  width={"40px"}
+                  height={"40px"}
+                />
+              </div>
+            )}
+            {selectedSong && (
+              <MusicPlayer
+                showSongs={showSongs}
+                setShowSongs={setShowSongs}
+                showNavBar={showNavBar}
+                setShowNavBar={setShowNavBar}
+                selectedSong={selectedSong}
+                selectedPlaylistId={selectedPlaylistId}
+                handleNext={handleNext}
+                handlePrevious={handlePrevious}
+                MusicFinderDialog={MusicFinderDialog}
+                color={color}
+              />
+            )}
+          </MusicPlayerContainer>
+        </>
       </Container>
     </Wrapper>
   );

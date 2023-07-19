@@ -28,3 +28,16 @@ export const formatDuration = (duration) => {
   const seconds = duration % 100;
   return `${minutes}:${seconds}`;
 };
+
+export const DEVICE_TYPES = {
+  MOBILE: "mobile",
+  TABLET: "tablet",
+  DESKTOP: "desktop",
+};
+
+export const PLAYLIST_MAPPER = {
+  1: "For You",
+  2: "Top Tracks",
+  3: "Favourites",
+  4: "Recently Played",
+};
