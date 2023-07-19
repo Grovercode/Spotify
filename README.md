@@ -1,70 +1,61 @@
-# Getting Started with Create React App
+# Spotify Music Player - Clone
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+This project is a frontend assessment to build a music player UI with GraphQL integration. The application allows users to enjoy a seamless music listening experience with a beautiful and interactive user interface. The music player fetches song data through GraphQL API, enabling users to play, pause, skip to the next or previous track, and search for their favorite songs.
 
-## Available Scripts
+## Demo
 
-In the project directory, you can run:
+Check out the live demo of the Spotify Music Player: [Live Demo](https://spotify-clone-tan-theta.vercel.app/)
 
-### `npm start`
+## Tech Stack
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- React JS
+- GraphQL
+- HTML
+- CSS
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Screenshots
 
-### `npm test`
+![image](https://github.com/Grovercode/Spotify/assets/57047418/bc410d3c-1cd5-4644-913a-c81fee0036a1)
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+![image](https://github.com/Grovercode/Spotify/assets/57047418/d979e543-78ba-4279-93d7-104ddb7aea7b)
 
-### `npm run build`
+![Screenshot 1](https://github.com/Grovercode/Spotify/assets/57047418/1b8eea82-9ef8-4e7b-b05d-f46e2c10c7fb) | ![Screenshot 2](https://github.com/Grovercode/Spotify/assets/57047418/fad69b88-85b7-41c2-83d7-01976ee55ef8)
+--- | ---
+![Screenshot 3](https://github.com/Grovercode/Spotify/assets/57047418/5cdad855-4642-414f-ba6a-573a12d16b9c) | ![Screenshot 4](https://github.com/Grovercode/Spotify/assets/57047418/77d0761f-44fd-48cb-ba8e-fb4bc3a6b9be)
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
 
-### `npm run eject`
+## Features
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+1. **Interactive and Responsive UI:** The application features a user-friendly interface that adapts to various screen sizes. On smaller screens, the music player becomes the main interface, with a menu button to access the song list.
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
+2. **GraphQL Integration:** Song data is fetched using GraphQL from the provided API, allowing seamless data retrieval and a smoother user experience.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
+3. **Continuous Music Playback:** Even when users navigate to other tabs, such as Favorites, the music will continue playing, ensuring an uninterrupted listening experience.
 
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
+4. **Dynamic Background Color:** The background gradient color changes according to the cover image of the currently playing song, adding an aesthetic touch to the music player.
 
-## Learn More
+5. **Fluid Animations and Transitions:** The interface is enriched with animations and transitions, such as list loading skeletons, animations and background color change animations, making the application feel dynamic and engaging.
 
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
+6. **Search Functionality:** Users can search for their favorite songs or artists, making it easy to find and play the desired music.
 
-To learn React, check out the [React documentation](https://reactjs.org/).
+7. **Music Controls:** The music player provides controls to play, pause, skip to the next or previous track, and adjust the playback using the seeker (progress bar).
 
-### Code Splitting
+8. **Tab Switching:** Users can switch between tabs, such as "For You" and "Top Tracks," to explore different song categories.
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
+## How to Run the Project
 
-### Analyzing the Bundle Size
+1. Clone the GitHub repository:
 
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
+2. Install the dependencies:
+```bash
+cd spotify-music-player
+npm install
+```
+3. Start the development server:
+```bash
+npm start
+```
 
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Thanks!
