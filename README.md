@@ -12,6 +12,7 @@ Check out the live demo of the Spotify Music Player: [Live Demo](https://spotify
 - GraphQL
 - HTML
 - CSS
+- Javascript
 
 ## Screenshots
 
