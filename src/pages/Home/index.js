@@ -8,7 +8,7 @@ import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
 import { useEffect } from "react";
 import { useDevice } from "../../config/custom-hooks/useDevice";
-import ThreeLineButtonComponent from "../../components/options-button";
+import OptionsButton from "../../components/options-button";
 import MusicListIcon from "../../assets/music-list.png";
 
 const Home = () => {
@@ -154,7 +154,7 @@ const Home = () => {
                   justifyContent: "space-between",
                 }}
               >
-                <ThreeLineButtonComponent
+                <OptionsButton
                   showNavBar={showNavBar}
                   onClick={() => {
                     setShowNavBar((prevState) => !prevState);

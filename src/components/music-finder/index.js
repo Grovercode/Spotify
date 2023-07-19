@@ -19,7 +19,7 @@ import {
 } from "./song/styles";
 import { DEVICE_TYPES, PLAYLIST_MAPPER } from "../../config/utils";
 import CloseButtonIcon from "../../assets/cross.png";
-import ThreeLineButtonComponent from "../options-button";
+import OptionsButton from "../options-button";
 
 const SkeletonSong = () => (
   <>
@@ -67,7 +67,8 @@ const MusicFinder = ({
       <TitleContainer deviceType={deviceType}>
         {deviceType === DEVICE_TYPES.MOBILE ? (
           setShowNavBar ? (
-            <ThreeLineButtonComponent
+            <OptionsButton
+              showNavBar={showNavBar}
               onClick={() => {
                 setShowNavBar((prevState) => !prevState);
               }}
