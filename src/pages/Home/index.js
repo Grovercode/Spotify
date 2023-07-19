@@ -1,4 +1,4 @@
-import React, { useLayoutEffect, useState } from "react";
+import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import NavBar from "../../components/navBar";
 import { Container, MusicPlayerContainer, Wrapper } from "./styles";
@@ -96,15 +96,6 @@ const Home = () => {
     return true;
   };
 
-  const checkNavBar = () => {
-    if (deviceType === DEVICE_TYPES.MOBILE) {
-      if (showNavBar) return true;
-
-      return false;
-    }
-    return true;
-  };
-
   if (error) {
     return <p>Error: {error?.message}</p>;
   }
@@ -164,6 +155,7 @@ const Home = () => {
                 }}
               >
                 <ThreeLineButtonComponent
+                  showNavBar={showNavBar}
                   onClick={() => {
                     setShowNavBar((prevState) => !prevState);
                   }}
@@ -174,8 +166,8 @@ const Home = () => {
                     setShowSongs(true);
                   }}
                   src={MusicListIcon}
-                  width={"35px"}
-                  height={"35px"}
+                  width={"40px"}
+                  height={"40px"}
                 />
               </div>
             )}

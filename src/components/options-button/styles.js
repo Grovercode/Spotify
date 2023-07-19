@@ -1,48 +1,62 @@
-import { css, styled } from "styled-components";
+import { styled } from "styled-components";
 
 export const ThreeLineButton = styled.button`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 40px;
-  height: 30px;
-  background-color: transparent;
+  width: 48px;
+  height: 40px;
   border: none;
   cursor: pointer;
-  transition: transform 0.3s ease-in-out;
   z-index: 3;
+  position: relative;
+  background-color: transparent;
+  overflow: hidden;
 
-  &:focus {
-    outline: none;
+  & span {
+    display: block;
+    position: absolute;
+    content: "";
+    width: 30px;
+    height: 4px;
+    background-color: white;
+    transition: transform 0.2s;
+    top: 50%;
+    left: 50%;
+    transform-origin: center;
+    margin-top: -2px;
+    margin-bottom: -2px;
+  }
+
+  & span:nth-child(1) {
+    transform: translate(-50%, -10px);
+  }
+
+  & span:nth-child(2) {
+    top: 50%;
+    transform: translate(-50%, 0px);
+  }
+
+  & span:nth-child(3) {
+    transform: translateY(10px);
+    transform: translate(-50%, 10px);
+  }
+
+  & span:nth-child(2) {
+    background-color: white;
   }
 
   ${({ isOpen }) =>
     isOpen &&
-    css`
-      transform: rotate(45deg);
-    `}
-`;
+    `
+    & span:nth-child(1) {
+      transform: rotate(45deg) translate(-50%, 15px);
+      
+    }
 
-export const Line = styled.span`
-  width: 100%;
-  height: 4px;
-  background-color: #fff;
-  transition: transform 0.3s ease-in-out;
+    & span:nth-child(2) {
+      opacity: 0;
+    }
 
-  &:first-child {
-    ${({ isOpen }) =>
-      isOpen &&
-      css`
-        transform: translateY(6px) rotate(-45deg);
-      `}
-  }
-
-  &:last-child {
-    ${({ isOpen }) =>
-      isOpen &&
-      css`
-        transform: translateY(-6px) rotate(45deg);
-      `}
-  }
+    & span:nth-child(3) {
+      transform: rotate(-45deg) translate(-50%, -15px);
+    }
+  `}
 `;

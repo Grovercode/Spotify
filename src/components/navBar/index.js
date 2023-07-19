@@ -20,12 +20,7 @@ const SkeletonPlaylistItem = () => (
   </SkeletonContainer>
 );
 
-const NavBar = ({
-  selectedPlaylistId,
-  setSelectedPlaylistId,
-  showNavBar,
-  setShowNavBar,
-}) => {
+const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId, showNavBar }) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
   const deviceType = useDevice();
 
@@ -36,8 +31,6 @@ const NavBar = ({
   const handlePlaylistClick = (playlistId) => {
     setSelectedPlaylistId(playlistId);
   };
-
-  console.log("show navbar = ", showNavBar);
 
   return (
     <Wrapper isOpen={showNavBar}>

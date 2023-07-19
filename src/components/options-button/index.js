@@ -1,17 +1,15 @@
-import React, { useState } from "react";
-import { Line, ThreeLineButton } from "./styles";
+import React from "react";
+import { ThreeLineButton } from "./styles";
 
-const ThreeLineButtonComponent = ({ onClick }) => {
-  const [isOpen, setIsOpen] = useState(false);
+const ThreeLineButtonComponent = ({ onClick, showNavBar }) => {
   const handleClick = () => {
-    setIsOpen(!isOpen);
     onClick();
   };
   return (
-    <ThreeLineButton isOpen={isOpen} onClick={handleClick}>
-      <Line isOpen={isOpen} />
-      <Line isOpen={isOpen} />
-      <Line isOpen={isOpen} />
+    <ThreeLineButton isOpen={showNavBar} onClick={handleClick}>
+      <span></span>
+      <span></span>
+      <span></span>
     </ThreeLineButton>
   );
 };

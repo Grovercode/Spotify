@@ -10,7 +10,7 @@ export const Wrapper = styled.div`
       ? `linear-gradient(135deg, ${props?.color} 0%, #000 100%)`
       : ""};
 
-  @media screen and (max-width: 1180px) {
+  @media screen and (max-width: 768px) {
     height: 100%;
     overflow: auto;
   }
@@ -35,26 +35,6 @@ export const Title = styled.div`
 export const ScrollableContainer = styled.div`
   margin-top: 25px;
   max-height: 80%;
-  /* overflow: auto; 
-
-   &::-webkit-scrollbar {
-    width: 4px;
-  }
-
-  &::-webkit-scrollbar-track {
-    background: #f1f1f1;
-  }
-
-  &::-webkit-scrollbar-thumb {
-    background: black;
-    opacity: 0.4;
-    border-radius: 4px;
-  }
-
-  &::-webkit-scrollbar-thumb:hover {
-    background: black;
-    opacity: 0.4;
-  } */
 `;
 
 export const CloseButton = styled.img`
