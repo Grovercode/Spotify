@@ -1,5 +1,45 @@
 import styled, { css, keyframes } from "styled-components";
 
+const overlayAnimation = keyframes`
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+`;
+
+// export const Wrapper = styled.div`
+//   padding: 32px;
+//   display: flex;
+//   flex-direction: column;
+//   justify-content: space-between;
+//   color: white;
+//   box-shadow: 2px 1px 20px 1px rgba(0, 0, 0, 0.2);
+
+//   ${(props) =>
+//     props.isOpen &&
+//     css`
+//       position: absolute;
+//       top: 0;
+//       left: 0;
+//       right: 0;
+//       bottom: 0;
+//       background-color: rgba(0, 0, 0, 0.6);
+//       z-index: 100;
+//       animation: ${overlayAnimation} 0.3s ease-in-out forwards;
+//     `}
+
+//   @media (min-width: 768px) {
+//     ${(props) =>
+//       props.isOpen &&
+//       css`
+//         position: relative;
+//         animation: none;
+//       `}
+//   }
+// `;
+
 export const Wrapper = styled.div`
   padding: 32px;
   display: flex;
@@ -7,6 +47,19 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   color: white;
   box-shadow: 2px 1px 20px 1px rgba(0, 0, 0, 0.2);
+
+  @media (max-width: 768px) {
+    position: fixed;
+    top: 0;
+    left: ${(props) => (props?.isOpen ? "0" : "-365px")};
+    height: -webkit-fill-available;
+    width: 100%;
+    max-width: 140px;
+    transition: 0.2s linear;
+    opacity: 1;
+    z-index: 3;
+    background: inherit;
+  }
 `;
 
 export const PlaylistsContainer = styled.div`
@@ -52,50 +105,4 @@ export const SkeletonPlaylists = styled(Playlists)`
   height: 24px;
   animation: ${skeletonAnimation} 3s linear infinite;
   border-radius: 8px;
-`;
-
-export const ThreeLineButton = styled.button`
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  align-items: center;
-  width: 40px;
-  height: 30px;
-  background-color: transparent;
-  border: none;
-  cursor: pointer;
-  transition: transform 0.3s ease-in-out;
-
-  &:focus {
-    outline: none;
-  }
-
-  ${({ isOpen }) =>
-    isOpen &&
-    css`
-      transform: rotate(45deg);
-    `}
-`;
-
-export const Line = styled.span`
-  width: 100%;
-  height: 4px;
-  background-color: #fff;
-  transition: transform 0.3s ease-in-out;
-
-  &:first-child {
-    ${({ isOpen }) =>
-      isOpen &&
-      css`
-        transform: translateY(6px) rotate(-45deg);
-      `}
-  }
-
-  &:last-child {
-    ${({ isOpen }) =>
-      isOpen &&
-      css`
-        transform: translateY(-6px) rotate(45deg);
-      `}
-  }
 `;

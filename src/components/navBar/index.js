@@ -1,5 +1,5 @@
 import React from "react";
-import { GET_PLAYLISTS } from "../../config/utils";
+import { DEVICE_TYPES, GET_PLAYLISTS } from "../../config/utils";
 import { useQuery } from "@apollo/client";
 import spotifyLogo from "../../assets/spotify-logo.svg";
 import ProfileImage from "../../assets/profile.png";
@@ -10,6 +10,7 @@ import {
   SkeletonPlaylists,
   Wrapper,
 } from "./styles";
+import { useDevice } from "../../config/custom-hooks/useDevice";
 
 const SkeletonPlaylistItem = () => (
   <SkeletonContainer>
@@ -19,23 +20,14 @@ const SkeletonPlaylistItem = () => (
   </SkeletonContainer>
 );
 
-// const ThreeLineButtonComponent = () => {
-//   const [isOpen, setIsOpen] = useState(false);
-//   const handleClick = () => {
-//     setIsOpen(!isOpen);
-//     onClick();
-//   };
-//   return (
-//     <ThreeLineButton isOpen={isOpen} onClick={handleClick}>
-//       <Line isOpen={isOpen} />
-//       <Line isOpen={isOpen} />
-//       <Line isOpen={isOpen} />
-//     </ThreeLineButton>
-//   );
-// };
-
-const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
+const NavBar = ({
+  selectedPlaylistId,
+  setSelectedPlaylistId,
+  showNavBar,
+  setShowNavBar,
+}) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
+  const deviceType = useDevice();
 
   if (error) {
     return <p>Error: {error?.message}</p>;
@@ -45,15 +37,21 @@ const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId }) => {
     setSelectedPlaylistId(playlistId);
   };
 
+  console.log("show navbar = ", showNavBar);
+
   return (
-    <Wrapper>
+    <Wrapper isOpen={showNavBar}>
       <div>
-        <img
-          onClick={() => setSelectedPlaylistId(1)}
-          src={spotifyLogo}
-          alt="logo"
-          style={{ cursor: "pointer" }}
-        />
+        {deviceType === DEVICE_TYPES.MOBILE ? (
+          <></>
+        ) : (
+          <img
+            onClick={() => setSelectedPlaylistId(1)}
+            src={spotifyLogo}
+            alt="logo"
+            style={{ cursor: "pointer" }}
+          />
+        )}
         {loading ? (
           <SkeletonPlaylistItem />
         ) : (

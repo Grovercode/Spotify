@@ -1,9 +1,11 @@
 import styled from "styled-components";
+import { DEVICE_TYPES } from "../../config/utils";
 
 export const Container = styled.div`
   width: 100%;
   min-width: 280px;
-  max-width: 480px;
+  max-width: ${(props) =>
+    props?.deviceType !== DEVICE_TYPES.DESKTOP ? "100%" : "480px"};
   height: max-content;
 `;
 
@@ -32,6 +34,7 @@ export const SubTitle = styled.div`
 
 export const Cover = styled.img`
   height: auto;
+  width: 100%;
   max-width: 100%;
   max-height: 100%;
   object-fit: contain;

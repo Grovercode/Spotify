@@ -8,6 +8,10 @@ export const InputContainer = styled.div`
   border-radius: 8px;
   background: rgba(255, 255, 255, 0.08);
   margin: 32px 16px 0px 16px;
+
+  @media screen and (max-width: 1180px) {
+    margin: 42px 16px 0px 16px;
+  }
 `;
 
 export const InputField = styled.input`

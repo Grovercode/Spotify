@@ -34,3 +34,10 @@ export const DEVICE_TYPES = {
   TABLET: "tablet",
   DESKTOP: "desktop",
 };
+
+export const PLAYLIST_MAPPER = {
+  1: "For You",
+  2: "Top Tracks",
+  3: "Favourites",
+  4: "Recently Played",
+};
