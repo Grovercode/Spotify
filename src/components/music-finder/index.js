@@ -62,7 +62,11 @@ const MusicFinder = ({
   }, [selectedSong]);
 
   return (
-    <Wrapper color={color} deviceType={deviceType}>
+    <Wrapper
+      selectedSong={!!selectedSong}
+      color={color}
+      deviceType={deviceType}
+    >
       <TitleContainer deviceType={deviceType}>
         {deviceType === DEVICE_TYPES.MOBILE ? (
           setShowNavBar ? (
@@ -95,7 +99,11 @@ const MusicFinder = ({
         </div>
       </TitleContainer>
 
-      <Search setSearch={setSearch} search={search} />
+      <Search
+        selectedSong={!!selectedSong}
+        setSearch={setSearch}
+        search={search}
+      />
 
       <ScrollableContainer>
         {isLoading ? (

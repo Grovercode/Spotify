@@ -15,7 +15,12 @@ export const Container = styled.div`
   flex-direction: row;
   gap: ${(props) =>
     props?.deviceType === DEVICE_TYPES.MOBILE ? "0px" : "100px"};
-  padding: 32px;
+  padding: ${(props) =>
+    props?.deviceType === DEVICE_TYPES.MOBILE
+      ? props?.selectedSong
+        ? "24px"
+        : "24px 0px"
+      : "32px"};
   width: 100%;
   overflow: auto;
   justify-content: ${(props) =>
@@ -58,7 +63,7 @@ export const Menu = styled.img`
 `;
 
 export const MusicMenu = styled.img`
-  width: 40px;
-  height: 40px;
+  width: 32px;
+  height: 32px;
   cursor: pointer;
 `;

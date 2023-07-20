@@ -40,6 +40,9 @@ export const Cover = styled.img`
   object-fit: contain;
   border-radius: 8px;
   margin: 32px 0px 24px 0px;
+  @media screen and (max-width: 768px) {
+    margin: 32px 0px 48px 0px;
+  }
 `;
 
 export const Seekbar = styled.div`
@@ -74,6 +77,10 @@ export const PlayerContainer = styled.div`
   justify-content: space-around;
   margin-top: 32px;
   user-select: none;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 24px;
+  }
 `;
 
 export const SideIcons = styled.img`

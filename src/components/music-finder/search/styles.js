@@ -9,8 +9,9 @@ export const InputContainer = styled.div`
   background: rgba(255, 255, 255, 0.08);
   margin: 32px 16px 0px 16px;
 
-  @media screen and (max-width: 1180px) {
-    margin: 42px 16px 0px 16px;
+  @media screen and (max-width: 768px) {
+    margin: ${(props) =>
+      props?.selectedSong ? "42px 16px 0px 16px" : "28px 16px 0px 16px"};
   }
 `;
 

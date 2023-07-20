@@ -15,7 +15,7 @@ import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
 import { useEffect } from "react";
 import { useDevice } from "../../config/custom-hooks/useDevice";
-import MusicMenuIcon from "../../assets/music-list.png";
+import MusicMenuIcon from "../../assets/music-menu.png";
 import MenuIcon from "../../assets/menu.png";
 
 const Home = () => {
@@ -130,7 +130,11 @@ const Home = () => {
         setShowNavBar={setShowNavBar}
       />
 
-      <Container deviceType={deviceType} id="Container">
+      <Container
+        selectedSong={!!selectedSong}
+        deviceType={deviceType}
+        id="Container"
+      >
         <ColorExtractor
           src={selectedSong?.photo}
           getColors={(colors) => {

@@ -1,14 +1,14 @@
-import React, { useState } from "react";
+import React from "react";
 import { InputContainer, InputField, SearchIcon } from "./styles";
 import searchIcon from "../../../assets/search-icon.svg";
 
-const Search = ({ setSearch, search }) => {
+const Search = ({ setSearch, search, selectedSong }) => {
   const handleInputChange = (e) => {
     setSearch(e.target.value);
   };
 
   return (
-    <InputContainer>
+    <InputContainer selectedSong={selectedSong}>
       <InputField
         type="text"
         placeholder="Search Song, Artist"
