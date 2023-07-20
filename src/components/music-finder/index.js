@@ -19,7 +19,8 @@ import {
 } from "./song/styles";
 import { DEVICE_TYPES, PLAYLIST_MAPPER } from "../../config/utils";
 import CloseButtonIcon from "../../assets/cross.png";
-import OptionsButton from "../options-button";
+import MenuIcon from "../../assets/menu.png";
+import { Menu } from "../../pages/Home/styles";
 
 const SkeletonSong = () => (
   <>
@@ -46,9 +47,7 @@ const MusicFinder = ({
   selectedPlaylistId,
   isLoading = false,
   deviceType,
-  setShowSongs,
   color = null,
-  showNavBar,
   setShowNavBar,
 }) => {
   const selectedSongRef = useRef(null);
@@ -67,11 +66,12 @@ const MusicFinder = ({
       <TitleContainer deviceType={deviceType}>
         {deviceType === DEVICE_TYPES.MOBILE ? (
           setShowNavBar ? (
-            <OptionsButton
-              showNavBar={showNavBar}
+            <Menu
+              src={MenuIcon}
               onClick={() => {
                 setShowNavBar((prevState) => !prevState);
               }}
+              marginLeft="16px"
             />
           ) : (
             <div style={{ width: "40px" }} />
@@ -85,12 +85,7 @@ const MusicFinder = ({
         <div>
           {deviceType === DEVICE_TYPES?.MOBILE ? (
             selectedSong ? (
-              <CloseButton
-                src={CloseButtonIcon}
-                onClick={() => {
-                  setShowSongs(false);
-                }}
-              />
+              <CloseButton src={CloseButtonIcon} onClick={() => {}} />
             ) : (
               <div style={{ width: "28px" }} />
             )

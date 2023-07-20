@@ -36,11 +36,6 @@ export const Playlists = styled.div`
   opacity: ${(props) => (props.selected ? 1 : 0.4)};
   padding-top: 16px;
   cursor: pointer;
-  @media (max-width: 768px) {
-    &:first-child {
-      padding-top: 45px;
-    }
-  }
 `;
 
 const skeletonAnimation = keyframes`

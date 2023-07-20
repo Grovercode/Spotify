@@ -36,7 +36,7 @@ export const Cover = styled.img`
   height: auto;
   width: 100%;
   max-width: 100%;
-  max-height: 100%;
+  max-height: 480px;
   object-fit: contain;
   border-radius: 8px;
   margin: 32px 0px 24px 0px;

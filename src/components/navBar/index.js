@@ -11,6 +11,8 @@ import {
   Wrapper,
 } from "./styles";
 import { useDevice } from "../../config/custom-hooks/useDevice";
+import CloseIcon from "../../assets/cross.png";
+import { Menu } from "../../pages/Home/styles";
 
 const SkeletonPlaylistItem = () => (
   <SkeletonContainer>
@@ -20,7 +22,12 @@ const SkeletonPlaylistItem = () => (
   </SkeletonContainer>
 );
 
-const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId, showNavBar }) => {
+const NavBar = ({
+  selectedPlaylistId,
+  setSelectedPlaylistId,
+  showNavBar,
+  setShowNavBar,
+}) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
   const deviceType = useDevice();
 
@@ -36,7 +43,12 @@ const NavBar = ({ selectedPlaylistId, setSelectedPlaylistId, showNavBar }) => {
     <Wrapper isOpen={showNavBar}>
       <div>
         {deviceType === DEVICE_TYPES.MOBILE ? (
-          <></>
+          <Menu
+            src={CloseIcon}
+            onClick={() => {
+              setShowNavBar((prevState) => !prevState);
+            }}
+          />
         ) : (
           <img
             onClick={() => setSelectedPlaylistId(1)}

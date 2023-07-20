@@ -42,3 +42,23 @@ export const MusicPlayerContainer = styled.div`
     overflow: auto;
   }
 `;
+
+export const MusicPlayerNavContainer = styled.div`
+  display: flex;
+  margin-bottom: 40px;
+  flex-direction: row;
+  justify-content: space-between;
+`;
+
+export const Menu = styled.img`
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  margin-left: ${(props) => props?.marginLeft};
+`;
+
+export const MusicMenu = styled.img`
+  width: 40px;
+  height: 40px;
+  cursor: pointer;
+`;
