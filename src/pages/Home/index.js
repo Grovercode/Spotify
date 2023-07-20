@@ -39,6 +39,12 @@ const Home = () => {
     setTimeout(() => {
       setSearch("");
     }, 100);
+    setTimeout(() => {
+      if (deviceType === DEVICE_TYPES.MOBILE) {
+        setShowSongs(true);
+        setShowNavBar(false);
+      }
+    }, 300);
   }, [selectedPlaylistId]);
 
   useEffect(() => {
