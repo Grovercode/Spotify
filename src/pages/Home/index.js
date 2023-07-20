@@ -1,15 +1,22 @@
 import React, { useState } from "react";
 import { useQuery } from "@apollo/client";
 import NavBar from "../../components/navBar";
-import { Container, MusicPlayerContainer, Wrapper } from "./styles";
+import {
+  Container,
+  Menu,
+  MusicMenu,
+  MusicPlayerContainer,
+  MusicPlayerNavContainer,
+  Wrapper,
+} from "./styles";
 import { DEVICE_TYPES, GET_SONGS } from "../../config/utils";
 import MusicFinder from "../../components/music-finder";
 import { ColorExtractor } from "react-color-extractor";
 import MusicPlayer from "../../components/music-player";
 import { useEffect } from "react";
 import { useDevice } from "../../config/custom-hooks/useDevice";
-import OptionsButton from "../../components/options-button";
-import MusicListIcon from "../../assets/music-list.png";
+import MusicMenuIcon from "../../assets/music-list.png";
+import MenuIcon from "../../assets/menu.png";
 
 const Home = () => {
   const [selectedPlaylistId, setSelectedPlaylistId] = useState(1);
@@ -33,6 +40,10 @@ const Home = () => {
       setSearch("");
     }, 100);
   }, [selectedPlaylistId]);
+
+  useEffect(() => {
+    setShowSongs(false);
+  }, [selectedSong]);
 
   const MusicFinderDialog = () => (
     <MusicFinder
@@ -102,7 +113,6 @@ const Home = () => {
 
   return (
     <Wrapper
-      animate={true}
       previousBackground={`linear-gradient(135deg, ${previousColor} 0%, #000 100%)`}
       background={`linear-gradient(135deg, ${color} 0%, #000 100%)`}
       id="Wrapper"
@@ -146,30 +156,20 @@ const Home = () => {
             id="music-player"
           >
             {deviceType === DEVICE_TYPES.MOBILE && (
-              <div
-                style={{
-                  display: "flex",
-                  marginBottom: "40px",
-                  flexDirection: "colmn",
-                  justifyContent: "space-between",
-                }}
-              >
-                <OptionsButton
-                  showNavBar={showNavBar}
+              <MusicPlayerNavContainer>
+                <Menu
+                  src={MenuIcon}
                   onClick={() => {
                     setShowNavBar((prevState) => !prevState);
                   }}
                 />
-
-                <img
+                <MusicMenu
+                  src={MusicMenuIcon}
                   onClick={() => {
                     setShowSongs(true);
                   }}
-                  src={MusicListIcon}
-                  width={"40px"}
-                  height={"40px"}
                 />
-              </div>
+              </MusicPlayerNavContainer>
             )}
             {selectedSong && (
               <MusicPlayer
