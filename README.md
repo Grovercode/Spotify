@@ -16,13 +16,15 @@ Check out the live demo of the Spotify Music Player: [Live Demo](https://spotify
 
 ## Screenshots
 
-![image](https://github.com/Grovercode/Spotify/assets/57047418/bc410d3c-1cd5-4644-913a-c81fee0036a1)
+![image](https://github.com/Grovercode/Spotify/assets/57047418/d399dc3d-d849-4041-a9b9-7af9d04e214c)
 
-![image](https://github.com/Grovercode/Spotify/assets/57047418/d979e543-78ba-4279-93d7-104ddb7aea7b)
+![image](https://github.com/Grovercode/Spotify/assets/57047418/90d1522a-dacd-4f30-b89c-32276e7adad7)
 
-![Screenshot 1](https://github.com/Grovercode/Spotify/assets/57047418/1b8eea82-9ef8-4e7b-b05d-f46e2c10c7fb) | ![Screenshot 2](https://github.com/Grovercode/Spotify/assets/57047418/fad69b88-85b7-41c2-83d7-01976ee55ef8)
---- | ---
-![Screenshot 3](https://github.com/Grovercode/Spotify/assets/57047418/5cdad855-4642-414f-ba6a-573a12d16b9c) | ![Screenshot 4](https://github.com/Grovercode/Spotify/assets/57047418/77d0761f-44fd-48cb-ba8e-fb4bc3a6b9be)
+
+![image](https://github.com/Grovercode/Spotify/assets/57047418/e1f3cfad-29e0-47ea-8947-c2bbd22b70f6) | ![image](https://github.com/Grovercode/Spotify/assets/57047418/31b04ebe-300d-40ed-a0e3-6519d4cac0df)
+
+![image](https://github.com/Grovercode/Spotify/assets/57047418/0ddc6855-bfa8-45ea-bc6b-e0a34941fd0a)| ![image](https://github.com/Grovercode/Spotify/assets/57047418/3f4d92e8-95bf-43c4-8239-24bfd86ed37b)
+
 
 
 
