@@ -51,6 +51,12 @@ const Home = () => {
     setShowSongs(false);
   }, [selectedSong]);
 
+  useEffect(() => {
+    if (deviceType !== DEVICE_TYPES.MOBILE) {
+      setShowSongs(false);
+    }
+  }, [deviceType]);
+
   const MusicFinderDialog = () => (
     <MusicFinder
       deviceType={DEVICE_TYPES.MOBILE}

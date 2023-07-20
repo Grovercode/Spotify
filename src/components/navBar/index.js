@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { DEVICE_TYPES, GET_PLAYLISTS } from "../../config/utils";
 import { useQuery } from "@apollo/client";
 import spotifyLogo from "../../assets/spotify-logo.svg";
@@ -32,6 +32,13 @@ const NavBar = ({
   setShowNavBar,
 }) => {
   const { loading, error, data } = useQuery(GET_PLAYLISTS);
+  const [isFirefox, setIsFirefox] = useState(false);
+
+  useEffect(() => {
+    const userAgent = window.navigator.userAgent.toLowerCase();
+    setIsFirefox(userAgent.includes("firefox"));
+  }, []);
+
   const deviceType = useDevice();
 
   if (error) {
@@ -43,7 +50,7 @@ const NavBar = ({
   };
 
   return (
-    <Wrapper isOpen={showNavBar}>
+    <Wrapper isFirefox={isFirefox} isOpen={showNavBar}>
       <div>
         {deviceType === DEVICE_TYPES.MOBILE ? (
           <HeaderContainer>

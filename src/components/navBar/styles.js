@@ -14,6 +14,7 @@ export const Wrapper = styled.div`
     top: 0;
     left: ${(props) => (props?.isOpen ? "0" : "-365px")};
     height: -webkit-fill-available;
+    height: ${(props) => (props?.isFirefox ? "95%" : "")};
     width: 100%;
     max-width: 140px;
     padding: 24px;
