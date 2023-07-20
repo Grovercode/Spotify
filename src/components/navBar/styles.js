@@ -1,4 +1,4 @@
-import styled, { css, keyframes } from "styled-components";
+import styled, { keyframes } from "styled-components";
 
 export const Wrapper = styled.div`
   padding: 32px;
@@ -7,6 +7,7 @@ export const Wrapper = styled.div`
   justify-content: space-between;
   color: white;
   box-shadow: 2px 1px 20px 1px rgba(0, 0, 0, 0.2);
+  min-width: fit-content;
 
   @media (max-width: 768px) {
     position: fixed;
@@ -15,6 +16,7 @@ export const Wrapper = styled.div`
     height: -webkit-fill-available;
     width: 100%;
     max-width: 140px;
+    padding: 24px;
     transition: 0.2s linear;
     opacity: 1;
     z-index: 3;
@@ -36,6 +38,11 @@ export const Playlists = styled.div`
   opacity: ${(props) => (props.selected ? 1 : 0.4)};
   padding-top: 16px;
   cursor: pointer;
+
+  @media screen and (max-width: 768px) {
+    padding-top: 12px;
+    font-size: 18px;
+  }
 `;
 
 const skeletonAnimation = keyframes`
@@ -68,7 +75,20 @@ export const SkeletonPlaylists = styled(Playlists)`
 `;
 
 export const CloseButton = styled.img`
-  width: 25px;
-  height: 25px;
+  width: 16px;
+  height: 16px;
+  cursor: pointer;
+`;
+
+export const HeaderContainer = styled.div`
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  align-content: center;
+  gap: 36px;
+`;
+
+export const Logo = styled.img`
+  height: ${(props) => props?.height};
   cursor: pointer;
 `;

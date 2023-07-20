@@ -5,6 +5,8 @@ import spotifyLogo from "../../assets/spotify-logo.svg";
 import ProfileImage from "../../assets/profile.png";
 import {
   CloseButton,
+  HeaderContainer,
+  Logo,
   Playlists,
   PlaylistsContainer,
   SkeletonContainer,
@@ -44,18 +46,26 @@ const NavBar = ({
     <Wrapper isOpen={showNavBar}>
       <div>
         {deviceType === DEVICE_TYPES.MOBILE ? (
-          <CloseButton
-            src={CloseIcon}
-            onClick={() => {
-              setShowNavBar((prevState) => !prevState);
-            }}
-          />
+          <HeaderContainer>
+            <Logo
+              onClick={() => setSelectedPlaylistId(1)}
+              src={spotifyLogo}
+              height={"32px"}
+              alt="logo"
+            />
+
+            <CloseButton
+              src={CloseIcon}
+              onClick={() => {
+                setShowNavBar((prevState) => !prevState);
+              }}
+            />
+          </HeaderContainer>
         ) : (
-          <img
+          <Logo
             onClick={() => setSelectedPlaylistId(1)}
             src={spotifyLogo}
             alt="logo"
-            style={{ cursor: "pointer" }}
           />
         )}
         {loading ? (

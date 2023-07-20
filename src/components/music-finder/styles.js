@@ -12,7 +12,7 @@ export const Wrapper = styled.div`
 
   @media screen and (max-width: 768px) {
     height: 100%;
-    overflow: auto;
+    overflow: ${(props) => (props?.selectedSong ? "auto" : "")};
   }
 `;
 
@@ -33,8 +33,12 @@ export const Title = styled.div`
 `;
 
 export const ScrollableContainer = styled.div`
-  margin-top: 25px;
+  margin-top: 24px;
   max-height: 80%;
+
+  @media screen and (max-width: 768px) {
+    margin-top: 12px;
+  }
 `;
 
 export const CloseButton = styled.img`

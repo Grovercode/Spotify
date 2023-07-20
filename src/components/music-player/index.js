@@ -109,7 +109,11 @@ const MusicPlayer = ({
         <Title>{selectedSong?.title}</Title>
         <SubTitle>{selectedSong?.artist}</SubTitle>
       </Header>
-      <Cover src={selectedSong?.photo} alt="album-cover" />
+      <Cover
+        deviceType={deviceType}
+        src={selectedSong?.photo}
+        alt="album-cover"
+      />
       <Seekbar>
         <Progress style={{ width: `${progress}%` }} />
         <input
