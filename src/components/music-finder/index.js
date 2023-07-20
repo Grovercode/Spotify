@@ -83,8 +83,11 @@ const MusicFinder = ({
         ) : (
           <></>
         )}
-
-        <Title>{PLAYLIST_MAPPER[selectedPlaylistId]}</Title>
+        {deviceType === DEVICE_TYPES.MOBILE && !!selectedSong ? (
+          <></>
+        ) : (
+          <Title>{PLAYLIST_MAPPER[selectedPlaylistId]}</Title>
+        )}
 
         <div>
           {deviceType === DEVICE_TYPES?.MOBILE ? (
