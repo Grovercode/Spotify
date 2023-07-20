@@ -66,3 +66,9 @@ export const SkeletonPlaylists = styled(Playlists)`
   animation: ${skeletonAnimation} 3s linear infinite;
   border-radius: 8px;
 `;
+
+export const CloseButton = styled.img`
+  width: 25px;
+  height: 25px;
+  cursor: pointer;
+`;

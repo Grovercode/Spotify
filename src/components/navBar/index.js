@@ -4,6 +4,7 @@ import { useQuery } from "@apollo/client";
 import spotifyLogo from "../../assets/spotify-logo.svg";
 import ProfileImage from "../../assets/profile.png";
 import {
+  CloseButton,
   Playlists,
   PlaylistsContainer,
   SkeletonContainer,
@@ -43,7 +44,7 @@ const NavBar = ({
     <Wrapper isOpen={showNavBar}>
       <div>
         {deviceType === DEVICE_TYPES.MOBILE ? (
-          <Menu
+          <CloseButton
             src={CloseIcon}
             onClick={() => {
               setShowNavBar((prevState) => !prevState);
