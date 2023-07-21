@@ -2,9 +2,7 @@
 
 This project is a frontend assessment to build a music player UI with GraphQL integration. The application allows users to enjoy a seamless music listening experience with a beautiful and interactive user interface. The music player fetches song data through GraphQL API, enabling users to play, pause, skip to the next or previous track, and search for their favorite songs.
 
-## Demo
 
-Check out the live demo of the Spotify Music Player: [Live Demo](https://spotify-clone-tan-theta.vercel.app/)
 
 ## Tech Stack
 
