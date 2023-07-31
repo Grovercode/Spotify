@@ -2,7 +2,8 @@
 
 This project is a frontend assessment to build a music player UI with GraphQL integration. The application allows users to enjoy a seamless music listening experience with a beautiful and interactive user interface. The music player fetches song data through GraphQL API, enabling users to play, pause, skip to the next or previous track, and search for their favorite songs.
 
-
+# Demo 
+You can find the demo here : https://musicplayer-frontend.netlify.app/
 
 ## Tech Stack
 
